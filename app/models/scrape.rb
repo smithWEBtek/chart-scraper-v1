@@ -1,5 +1,11 @@
 class Scrape < ApplicationRecord
  
+# URLS
+# http://www.coffeebreakgrooves.com/genres/smooth-rnb/2
+# append number to get next album
+# each album has a zip file to download charts for that album
+
+
 
 	def self.charts
 		albums = []
