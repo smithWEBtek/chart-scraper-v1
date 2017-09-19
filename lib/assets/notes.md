@@ -41,19 +41,27 @@ Album
 	:title
 	:genre_id
 belongs_to :genre
-has_many :tracks
-has_many :charts
+has_many :album_tracks
+has_many :tracks, through: :album_tracks
+
+has_many :album_charts
+has_many :charts, through: :album_charts
  
+AlbumTracks
+	belongs_to :album
+	belongs_to :chart
+
+AlbumCharts
+	belongs_to :album
+	belongs_to :track
+
 Track
 	:title
-	:genre_id
-	:album_id
-belongs_to :genre
-belongs_to :album
+has_many :album_tracks
+has_many :albums, through: :album_tracks
+
 
 Chart
 	:title
-	:genre_id
-	:album_id
-belongs_to :genre
-belongs_to :album
+has_many :album_charts
+has_many :albums, through: :album_charts
