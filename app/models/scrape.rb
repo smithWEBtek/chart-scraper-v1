@@ -1,19 +1,43 @@
 class Scrape < ApplicationRecord
 	
+	# get Genres and genre_urls
 	def self.genres
-		@genre_urls = []
 		file = Nokogiri::HTML("http://www.coffeebreakgrooves.com/genres")
 		page = HTTParty.get(file)
 		parse = Nokogiri::HTML(page)
-		genres = parse.css(".has-drop.active a").each do |element|
-			genre_title = element.text
-			new_genre = Genre.find_or_create_by(title: genre_title)
-			new_genre.url = "http://www.coffeebreakgrooves.com/" + element.attributes["href"].value
-			new_genre.save
+		genres = parse.css(".has-drop.active a").drop(1).each do |element|
+			
 binding.pry 
 
+			genre_title = element.text
+			genre_slug = parse.css(".has-drop.active a").drop(1)
+			new_genre = Genre.find_or_create_by(title: genre_title)
+			new_genre.genre_slug = genre_slug
+			new_genre.save
 		end	
 	end
+
+	# Genre, icons, chord-charts
+
+
+
+
+	# return array of zip file urls, one for each genre/album
+	def self.chart_zip_urls
+		@genre_urls = []
+		Genre.all.each{|g|@genre_urls.push(g.url)}
+
+		@chart_zip_urls = []
+		Genre.all.each do |genre|
+			file = Nokogiri::HTML(genre.url)
+			page = HTTParty.get(file)
+			parse = Nokogiri::HTML(page)
+			@chart_zip_urls << parse.css("#btn-chordcharts")[0].attributes["href"].value
+		end
+		@chart_zip_urls
+	end
+	
+
 
 	def self.scrape_albums
 		scraped_albums = []
