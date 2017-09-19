@@ -1,0 +1,62 @@
+<h1>Edit Contact</h1>
+<%= form_for @contact do |f| %>
+  <p>
+    <%= f.label :company %>
+    <%= f.collection_select :company_id, Company.all, :id, :name %>
+  </p>
+
+<!--   <p>Add new company:
+  </p>
+  <p>
+    <%#= f.fields_for(:company) do |fc| %>
+      <%#= fc.label :name %>
+      <%#= fc.text_field :name %><br>
+    <%# end %>
+  </p> -->
+    <hr>
+  <p>
+    <%#= f.fields_for :company %>
+  </p>
+  <p>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= f.label :role %>
+    <%= f.text_field :role %>
+  </p>
+  <p>
+    <%= f.label :about %>
+    <%= f.text_field :about %>
+  </p>
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label :linkedin %>
+    <%= f.text_field :linkedin %>
+  </p>
+  <p>
+    <%= f.label :twitter %>
+    <%= f.text_field :twitter %>
+  </p>
+  <p>
+    <%= f.label :blog %>
+    <%= f.text_field :blog %>
+  </p>  
+  <p>
+    <%= f.label :website %>
+    <%= f.text_field :website %>
+  </p>
+<%= f.submit %>
+<% end %>

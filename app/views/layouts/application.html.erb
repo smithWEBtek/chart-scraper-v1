@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Csv3</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'bootstrap' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'tools' %>
+  </head>
+  <body>
+    <div class="container">
+      <div align="left">
+      <hr>
+      <%= render partial: 'layouts/main_nav' %>
+      <hr>
+      <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

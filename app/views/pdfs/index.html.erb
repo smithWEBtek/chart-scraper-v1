@@ -1,0 +1,17 @@
+<h1>Pdfs</h1>
+<table>
+  <th>
+    <tr>
+      <td>id</td>
+      <td>name</td>
+      <td>location</td>
+    </tr>
+  </th>
+<% @pdfs.each do |pdf| %>
+  <tr>
+    <td><%= pdf.id %></td>
+    <td><%= link_to pdf.name, pdf_path(pdf) %></td>
+    <td><%= pdf.location %></td>
+  </tr>
+<% end %>
+</table>

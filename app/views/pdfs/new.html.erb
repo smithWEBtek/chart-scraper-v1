@@ -1,0 +1,13 @@
+<h1>New Pdf</h1>
+
+<%= form_for @pdf do |f| %>
+  <p> 
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :location %>
+    <%= f.file_field :location %>  
+  </p>
+<%= f.submit %>
+<% end %>
