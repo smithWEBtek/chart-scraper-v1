@@ -8,14 +8,10 @@ class Scrape < ApplicationRecord
 		genres = parse.css(".has-drop.active a").each do |element|
 			genre_title = element.text
 			new_genre = Genre.find_or_create_by(title: genre_title)
-
-			url_prefix = "http://www.coffeebreakgrooves.com/"
-			url_suffix	element.attributes["href"].value
-			full_url = url_prefix + url_suffix
-
-			new_genre.url = full_url
+			new_genre.url = "http://www.coffeebreakgrooves.com/" + element.attributes["href"].value
 			new_genre.save
- 
+binding.pry 
+
 		end	
 	end
 

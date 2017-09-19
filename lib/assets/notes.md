@@ -15,12 +15,13 @@ WORK LIST
 
 
 /genres
-/genres/:id  (album#), if #-<instrument> = "music minus 1 track"
-	scrape "/genres/<name-of-genre>/" + any following digits only
-	to get that number's album page
-		<a href="/genres/smooth-jazz/5" album-id="236" album-number="5">
-		
-/chord-charts
+	/genres/:id  (album#), if #-<instrument> = "music minus 1 track"
+		scrape "/genres/<name-of-genre>/" + any following digits only
+		to get that number's album page
+			<a href="/genres/smooth-jazz/5" album-id="236" album-number="5">
+/albums
+
+/chord-charts (for this album, in a zip file)
 
 
 
