@@ -1,5 +1,7 @@
 class TracksController < ApplicationController
-  def index
+	before_action :set_track, only:[:show, :edit, :update, :destroy]
+	def index
+		@tracks = Track.all
   end
 
   def show
@@ -18,5 +20,10 @@ class TracksController < ApplicationController
   end
 
   def destroy
-  end
+	end
+	
+	private
+	def set_track
+		@track = Track.find(params[:id])
+	end
 end
