@@ -44,14 +44,6 @@ has_many :tracks, through: :album_tracks
 
 has_many :album_charts
 has_many :charts, through: :album_charts
- 
-AlbumTracks
-	belongs_to :album
-	belongs_to :chart
-
-AlbumCharts
-	belongs_to :album
-	belongs_to :track
 
 Track
 	:title
@@ -63,3 +55,11 @@ Chart
 	:title
 has_many :album_charts
 has_many :albums, through: :album_charts
+ 
+AlbumTracks
+	belongs_to :album
+	belongs_to :chart
+
+AlbumCharts
+	belongs_to :album
+	belongs_to :track
