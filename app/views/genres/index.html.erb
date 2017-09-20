@@ -1,6 +1,10 @@
-<h1>Genres#index</h1>
+<h1>Genres</h1>
 <p>
 	<% @genres.each do |genre| %>
-		<%= genre.title %><br>
+		<strong>
+			<%= genre.title %>
+		</strong><br>
+		<%= genre.genre_slug %><br>
+		<%= genre.url %><br><br>
 	<% end %>
 </p>
