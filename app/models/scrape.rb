@@ -107,9 +107,11 @@ class Scrape < ApplicationRecord
     file = Nokogiri::HTML("https://www.theknot.com/content/best-wedding-songs")
     page = HTTParty.get(file)
     parse = Nokogiri::HTML(page)
-    songs = parse.css("a").first 
-
-    binding.pry 
-  
+    categories = parse.css(".slide-caption li")
+    categories.each do |element|
+      category = Category.find_or_create_by(name: element.css("span").text)
+      category.save 
+    end
+    binding.pry
   end
 end

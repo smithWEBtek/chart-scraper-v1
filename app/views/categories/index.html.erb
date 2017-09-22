@@ -2,8 +2,8 @@
 <p>
 	<% @categories.each do |category| %>
 		<%= category.name %><br>
-		<% category.songs.each do |song| %>
-		<%= link_to song.title, song_path(song) %><br>
-	<% end %>
+		  <% category.songs.each do |song| %>
+		  <%= link_to song.title, song_path(song) %><br>
+	  <% end %>
 	<% end %>
 </p>
