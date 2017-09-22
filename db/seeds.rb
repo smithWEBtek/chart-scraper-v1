@@ -90,6 +90,7 @@ end
 
 ######################################################
 
+
 DATA_charts = {
   :chart_keys =>
     ["title"],
@@ -134,13 +135,61 @@ end
 
 ######################################################
 
+DATA_categories = {
+  :category_keys =>
+    ["name"],
+  :categories => [
+    ["Unspecified"],
+    ["Kids Songs"],
+    ["RnB"],
+    ["Pop"],
+    ["Classical"]
+  ]
+}
+
+def make_categories
+  DATA_categories[:categories].each do |category|
+    new_category = Category.new
+    category.each_with_index do |attribute, i|
+      new_category.send(DATA_categories[:category_keys][i]+"=", attribute)
+    end
+    new_category.save
+  end
+end
+
+######################################################
+
+DATA_songs = {
+  :song_keys =>
+  ["title", "artist", "category_id"],
+  :songs => [
+    ["Wheels On the Bus", "Barney", 2],
+    ["Your Song", "Elton John", 3],
+    ["Overjoyed", "Stevie Wonder", 4]
+  ]
+}
+
+def make_songs
+  DATA_songs[:songs].each do |song|
+    new_song = Song.new
+    song.each_with_index do |attribute, i|
+      new_song.send(DATA_songs[:song_keys][i]+"=", attribute)
+    end
+    new_song.save
+  end
+end
+
+######################################################
+
 def main
   make_genres
 	make_albums
 	make_tracks 
 	make_charts
 	make_album_tracks
-	make_album_charts
+  make_album_charts
+  make_categories
+  make_songs
 end
 
 main

@@ -1,9 +1,9 @@
 <h1>Categories#index</h1>
 <p>
 	<% @categories.each do |category| %>
-		<%= category.name %><br>
+		<h3><%= category.name %><br></h3>
 		  <% category.songs.each do |song| %>
-		  <%= link_to song.title, song_path(song) %><br>
+		  <%= link_to song.title, song_path(song) %><br><br>
 	  <% end %>
 	<% end %>
 </p>

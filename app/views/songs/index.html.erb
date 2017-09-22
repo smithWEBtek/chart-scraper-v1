@@ -1,8 +1,8 @@
 <h1>Songs#index</h1>
 <p>
 	<% @songs.each do |song| %>
-		<%= song.title %><br>
-		<%= song.artist %><br>
-		<%= song.category %><br>
+		<p>
+      <%= song.id %> : <%= song.title %> | <%= song.artist %> | <%= song.category.name %>
+    </p>
 	<% end %>
 </p>

@@ -1,9 +1,14 @@
 <div class="container">
+  <% if Genre.count == 0 %>
+    <%= link_to "Scrape All", scrape_path %> 
+  <% else %>
+    <%= link_to "Reset All", reset_path %> ||
+  <% end %>
+  
 	<%= link_to "Genres", genres_path %> |
 	<%= link_to "Albums", albums_path %> |
 	<%= link_to "Tracks", tracks_path %> |
 	<%= link_to "Charts", charts_path %> |
-	<%= link_to "Reset All", reset_path %> |
-	<%= link_to "Scrape All", scrape_path %>
-
+	<%= link_to "Categories", categories_path %> |
+	<%= link_to "Songs", songs_path %>
 </div>
