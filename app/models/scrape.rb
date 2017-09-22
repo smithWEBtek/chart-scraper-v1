@@ -97,21 +97,40 @@ class Scrape < ApplicationRecord
 # 		# scrape audio files
 # 	end
 
-
-
 # ###################   wedding song scraper
-
- 
-
-  def self.songs
+  def self.songs 
     file = Nokogiri::HTML("https://www.theknot.com/content/best-wedding-songs")
     page = HTTParty.get(file)
     parse = Nokogiri::HTML(page)
-    categories = parse.css(".slide-caption li")
-    categories.each do |element|
-      category = Category.find_or_create_by(name: element.css("span").text)
+    groups = parse.css(".slide-caption")
+    groups.each do |group|
+
+      
+      category = Category.find_or_create_by(name: group.css("span").text)
       category.save 
+      
+      binding.pry
+
+      list = parse.css(".slide-caption ol li")
+      
+
+    # list.each do |song| 
+      
+      # song_title = song.text.split(' by ')[0].split('')
+      # song_title.pop
+      # song_title.shift
+      # string_song_title =  song_title.join
+      
+      # song_artist = song.text.split(' by ')[1]
+      # @song = Song.find_or_create_by(title: string_song_title, artist: song_artist )
+      # @song.save
+      
+
+    # categories.each do |element|
+    #   category = Category.find_or_create_by(name: element.css("span").text)
+    #   category.save 
     end
-    binding.pry
   end
+
 end
+
