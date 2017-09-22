@@ -1,0 +1,18 @@
+<h1>Song#new</h1>
+<%= form_for @song do |f| %>
+
+<p> 
+  <%= f.label :chart_id %>
+  <%= f.text_field :chart.title %>
+</p>
+
+<p> 
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+</p>
+<p>
+  <%= f.label :category %>
+  <%= f.file_field :category %>  
+</p>
+<%= f.submit %>
+<% end %>

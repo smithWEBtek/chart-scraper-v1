@@ -96,4 +96,20 @@ class Scrape < ApplicationRecord
 #  def self.audio
 # 		# scrape audio files
 # 	end
+
+
+
+# ###################   wedding song scraper
+
+ 
+
+  def self.songs
+    file = Nokogiri::HTML("https://www.theknot.com/content/best-wedding-songs")
+    page = HTTParty.get(file)
+    parse = Nokogiri::HTML(page)
+    songs = parse.css("a").first 
+
+    binding.pry 
+  
+  end
 end
