@@ -4,9 +4,8 @@ class CreateSongs < ActiveRecord::Migration[5.0]
       t.string :title
       t.string :track
       t.string :artist
-      t.string :category
-
-      t.integer :chart_id, default: 1
+      t.string :category_id
+      
     end
   end
 end

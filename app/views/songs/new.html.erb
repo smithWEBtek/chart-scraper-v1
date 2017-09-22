@@ -1,18 +1,12 @@
 <h1>Song#new</h1>
-<%= form_for @song do |f| %>
-
-<p> 
-  <%= f.label :chart_id %>
-  <%= f.text_field :chart.title %>
-</p>
-
-<p> 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-</p>
-<p>
-  <%= f.label :category %>
-  <%= f.file_field :category %>  
-</p>
-<%= f.submit %>
-<% end %>
+  <%= form_for @song do |f| %>
+    <p> 
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :category %>
+      <%= f.collection_select :category_id, Category.all, :id, :name %>  
+    </p>
+  <%= f.submit %>
+  <% end %>

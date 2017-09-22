@@ -10,17 +10,15 @@ class SongsController < ApplicationController
     end
   
     def show
-      @song = song.find_by_id(params[:id])
-      song_full_path = Rails.root + "app/assets/songs/" + @song.name
-      send_file(song_full_path, :filename => "@song.name.gsub('.song','')", :disposition => 'inline', :type => "application/song")
-    end
+      @song = Song.find_by_id(params[:id])
+     end
   
     def new
       @song = Song.new 
     end
   
     def create
-      @song = song.new(song_params)
+      @song = Song.new(song_params)
       if @song.save
         flash[:message] = 'song created.'
         redirect_to song_path(@song)
@@ -53,7 +51,7 @@ class SongsController < ApplicationController
     private
   
     def song_params
-      params.require(:song).permit(:name, :location)
+      params.require(:song).permit(:title, :category, :chart_id)
     end
   end
   
